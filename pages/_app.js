@@ -22,6 +22,12 @@ const MyApp = ({ Component, pageProps }) => {
   // TODO: Move this to a useAuthenticate hook
   // TODO: do I still need to do this here with the getServerSIdeProps method ?
   // TODO: DO we even still need a user context ? 
+  // TODO: Don't think I need a context here now I'm using getSErverside props for 
+  // user auth.
+
+  // can use this directly on the landing page instead.
+  // Will need to move the saveAndUpdate in to the callback if that's the case since
+  // this won't get called all the time
   useEffect(() => {
     const getUser = async () => {
       dispatch({ type: 'SET_FETCHING' })
