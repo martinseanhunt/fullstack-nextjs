@@ -1,23 +1,13 @@
+import { useEffect } from 'react'
 import Head from 'next/head'
-import styled from 'styled-components'
+import { useRouter } from 'next/router'
 
 import { useUserContext } from '../contexts/user/UserContext'
 
 import Hero from '../components/layout/Hero'
 
-const Title = styled.h1`
-  font-size: 50px;
-  color: ${({ theme }) => theme.colors.primary};
-`
-
 // TODO: Rename hero
 // TODO: Loading spinner
-
-const Dashboard = ({ user }) => (
-  <div>
-    Hello {user.name} <a href="/api/logout">Logout</a>
-  </div>
-)
 
 // TODO: I don't think there's even a need to chek the laoding state here... 
 // instaed of rendering dahsboard we can just redirect if there's a user.sub
@@ -31,7 +21,12 @@ const Dashboard = ({ user }) => (
 // next step is to hook up to mongo and cehck for / save user to the database so we can save progress.
 
 const Home = () => {
+  const router = useRouter()
   const { state: user } = useUserContext()
+  
+  useEffect(() => {
+    if(user.sub) router.push('/dashboard')
+  }, [user.sub])
 
   return (
     <>
@@ -39,7 +34,7 @@ const Home = () => {
         <title>Fretboard Accellerator Companion - Home</title>
       </Head>
 
-      {user.isFetching ? '...loading' : !user.sub ? <Hero /> : <Dashboard user={user} />}
+      <Hero />
     </>
   )
 }

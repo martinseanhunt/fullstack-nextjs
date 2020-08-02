@@ -5,6 +5,7 @@ import Row from './Row'
 // TODO: Mobile styling
 // TODO: this isn't a hero anymore! Move it out of this component
 // TODO: Add live activity stream! 
+// TODO: Move this out of layout
 
 const Hero = () => {
   return (  
@@ -44,6 +45,7 @@ const BackGroundImages = styled.div`
   animation: ${imageSwap} 9s linear infinite;
   background-size: cover;
   background-position: center;
+  background-color: #212125;
 
   /* Use this to preload images so there's no flash on the transitions */
   &&:after {
@@ -67,7 +69,6 @@ const Container = styled.div`
   color: #fff;
   overflow: visible;
   flex-direction: column;
-  background: #202022;
   background-color: rgba(0, 0, 0, 0.45);
 
   @media (min-width: 992px) {
