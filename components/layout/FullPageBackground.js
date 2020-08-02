@@ -3,26 +3,15 @@ import styled, { keyframes } from 'styled-components'
 import Row from './Row'
 
 // TODO: Mobile styling
-// TODO: this isn't a hero anymore! Move it out of this component
-// TODO: Add live activity stream! 
-// TODO: Move this out of layout
 
-const Hero = () => {
+// TODO BONUS: Add live activity stream!
+
+const FullPageBackground = ({ children }) => {
   return (  
     <BackGroundImages>
       <Container>
         <Content>
-          <Logo><img src="/logo-full-wh.png" alt="Scotts Bass Lessons Logo" /></Logo>
-          <HeadLine>
-            Master <br/>
-            Your 
-            <span>Fretboard</span>
-          </HeadLine>
-          <SubHeading>
-            The <b>unofficial</b> companion app for the <b>Scotts bass lessons</b> course on unlocking the fretboard. 
-            Track your progress and share with the community.
-          </SubHeading>
-          <Button href="/api/login">Signup / Login to Get Started</Button>
+          {children}
         </Content>
       </Container>
     </BackGroundImages>
@@ -85,47 +74,4 @@ const Content = styled(Row)`
   flex-wrap: nowrap;
 `
 
-// TODO: Probably move this out in to seperate component
-const Logo = styled.h2`
-  img { width: 220px; }
-`
-
-// TODO: pull out sizes etc in to theme
-const HeadLine = styled.h1`
-  font-size: 14.0rem;
-  letter-spacing: -.5rem;
-  line-height: 0.8em;
-  font-weight: 900;
-  text-transform: uppercase;
-
-  span {
-    display: block; 
-    color: #FDF04E;
-  }
-`
-
-const SubHeading = styled.p`
-  font-size: 2.4rem;
-  color: #fff;
-  font-weight: 400;
-  max-width: 750px;
-`
-// TODO nota button anymore
-const Button = styled.a`
-  background: none;
-  color: #fff;
-  border: 3px solid #fff;
-  border-radius: 5px;
-  padding: 15px 30px;
-  font-size: 1.6rem;
-  font-weight: bold;
-  transition: background 0.2s;
-  text-decoration: none;
-
-  &&:hover {
-    background: rgba(0,0,0,0.2);
-    cursor: pointer;
-  }
-`
-
-export default Hero
+export default FullPageBackground

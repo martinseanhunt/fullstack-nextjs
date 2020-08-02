@@ -1,24 +1,15 @@
 import { useEffect } from 'react'
-import Head from 'next/head'
 import { useRouter } from 'next/router'
+import Head from 'next/head'
+import styled from 'styled-components'
 
 import { useUserContext } from '../contexts/user/UserContext'
 
-import Hero from '../components/layout/Hero'
+import FullPageBackground from '../components/layout/FullPageBackground'
+import Logo from '../components/Logo'
+import ButtonLink from '../components/ButtonLink'
 
-// TODO: Rename hero
-// TODO: Loading spinner
-
-// TODO: I don't think there's even a need to chek the laoding state here... 
-// instaed of rendering dahsboard we can just redirect if there's a user.sub
-
-// Or we could keep the loading
-
-// Or move it up a level and have it as a catch all.
-
-// it shouldn't be rendered to the server since the server generates the static files based on first pass. (useffect won't hav ebeen run)
-
-// next step is to hook up to mongo and cehck for / save user to the database so we can save progress.
+// TODO: Mobile styling
 
 const Home = () => {
   const router = useRouter()
@@ -34,9 +25,38 @@ const Home = () => {
         <title>Fretboard Accellerator Companion - Home</title>
       </Head>
 
-      <Hero />
+      <FullPageBackground>
+          <Logo />
+          <HeadLine>Master <br/>Your <span>Fretboard</span></HeadLine>
+          <SubHeading>
+            The <b>unofficial</b> companion app for the <b>Scotts bass lessons</b> course on unlocking the fretboard. 
+            Track your progress and share with the community.
+          </SubHeading>
+          <ButtonLink href="/api/login">Signup / Login to Get Started</ButtonLink>
+      </FullPageBackground>
     </>
   )
 }
+
+// TODO: pull out sizes etc in to theme
+const HeadLine = styled.h1`
+  font-size: 14.0rem;
+  letter-spacing: -.5rem;
+  line-height: 0.8em;
+  font-weight: 900;
+  text-transform: uppercase;
+
+  span {
+    display: block; 
+    color: #FDF04E;
+  }
+`
+// TODO: get values from theme
+const SubHeading = styled.p`
+  font-size: 2.4rem;
+  color: #fff;
+  font-weight: 400;
+  max-width: 750px;
+`
 
 export default Home

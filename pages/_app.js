@@ -20,6 +20,8 @@ const MyApp = ({ Component, pageProps }) => {
   const { sub } = user
 
   // TODO: Move this to a useAuthenticate hook
+  // TODO: do I still need to do this here with the getServerSIdeProps method ?
+  // TODO: DO we even still need a user context ? 
   useEffect(() => {
     const getUser = async () => {
       dispatch({ type: 'SET_FETCHING' })
@@ -27,27 +29,6 @@ const MyApp = ({ Component, pageProps }) => {
       dispatch({ type: 'SET_USER', payload: user })
     }
     
-    // TODO: Could a user just use devtools to add a sub in to state
-    // and spoof this? If so, need to find a better way to check authentication
-    // ANSWER: 
-    // TODO: Use this on pages that need authentication :)
-    /*
-      If you need to access the user's session from within an API route or a Server-rendered page you can use getSession. Note that this object will also contain the user's access_token and id_token.
-
-      Profile.getInitialProps = async ({ req, res }) => {
-        if (typeof window === 'undefined') {
-          const session = await auth0.getSession(req);
-          if (!session || !session.user) {
-            res.writeHead(302, {
-              Location: '/api/login'
-            });
-            res.end();
-            return;
-          }
-          return { user: session.user };
-        }
-      };
-    */
     if(!sub) getUser()
   }, [sub])
 

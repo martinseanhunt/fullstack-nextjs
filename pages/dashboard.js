@@ -1,22 +1,9 @@
 import Head from 'next/head'
 
-import { useUserContext } from '../contexts/user/UserContext'
+import auth0 from '../lib/auth0'
 
-// TODO: Check auth for REAL and redirect to login if no user. could I use a useRequireAuth hook?
-// or reusable funciton? 
-const Dashboard = () => {
-  const { state: user } = useUserContext()
-
-  // If we're on this page and we've passed authentication then 
-  // we still have to wait for the user profile to start fetching
-  // so that's a loading state also.
-  
-  // TODO: revisit this to see if we can just use isFetching after
-  // I've hooked up the required authentication
-  const loading = user.isFetching || !user.sub
-
-  // TODO: Proper loading component / UI
-  return loading ? '...loading' : (
+const Dashboard = ({ user }) => {
+  return (
     <>
       <Head>
         <title>Fretboard Accellerator Companion - Dashboard</title>
@@ -27,6 +14,18 @@ const Dashboard = () => {
       <a href="/api/logout">Logout</a>
     </>
   )
+}
+
+// Cehcking authentication agains auth0 for protected pages
+// TODO: move cehcking auth to seperate reusable function
+export const getServerSideProps = async ({ req, res }) => {
+  const session = await auth0.getSession(req)
+  
+  if (!session || !session.user) {
+    return res.writeHead(302, { Location: '/' }).end()
+  }
+
+  return { props: { user: session.user } }
 }
 
 export default Dashboard
