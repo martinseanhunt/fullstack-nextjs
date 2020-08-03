@@ -8,9 +8,7 @@ const Dashboard = ({ user }) => {
       <Head>
         <title>Fretboard Accellerator Companion - Dashboard</title>
       </Head>
-      <ul>
-        {Object.entries(user).map(([key, value]) => <li key={key}>{value}</li>)}
-      </ul>
+      <div>Welcome {user.given_name || user.name}</div>
       <a href="/api/logout">Logout</a>
     </>
   )

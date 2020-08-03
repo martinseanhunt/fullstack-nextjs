@@ -2,6 +2,8 @@ import React, { useContext, createContext, useReducer, useMemo } from 'react'
 
 import userReducer, { initialState } from './userReducer'
 
+// TODO: Delete this or change it in to another context
+
 const UserContext = createContext()
 const useUserContext = () => useContext(UserContext)
 

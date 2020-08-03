@@ -7,9 +7,6 @@
 // TODO: Extend this to be able to add other props if I find I need to use 
 // getServerSideProps for anything else. 
 
-
-// TODO: Move this in to lib/user I think :) 
-
 import auth0 from '../lib/auth0'
 
 const requireAuthentication = async ({ req, res }) => {

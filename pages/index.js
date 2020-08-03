@@ -3,7 +3,7 @@ import { useRouter } from 'next/router'
 import Head from 'next/head'
 import styled from 'styled-components'
 
-import { useUserContext } from '../contexts/user/UserContext'
+import { fetchUser } from '../lib/user'
 
 import FullPageBackground from '../components/layout/FullPageBackground'
 import Logo from '../components/Logo'
@@ -13,12 +13,16 @@ import ButtonLink from '../components/ButtonLink'
 
 const Home = () => {
   const router = useRouter()
-  const { state: user } = useUserContext()
-  
-  useEffect(() => {
-    if(user.sub) router.push('/dashboard')
-  }, [user.sub])
 
+  useEffect(() => {
+    const getUser = async () => {
+      const user = await fetchUser()
+      if(user) router.push('/dashboard')
+    }
+    
+    getUser()
+  }, [])
+  
   return (
     <>
       <Head>
