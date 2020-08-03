@@ -18,6 +18,8 @@ const FullPageBackground = ({ children }) => {
   ) 
 }
 
+// TODO: See what values can be moved out in to theme
+
 // TODO - make this animation dynamic so any amount of images
 // can be passed as props!
 const imageSwap = keyframes`
@@ -35,6 +37,9 @@ const BackGroundImages = styled.div`
   background-size: cover;
   background-position: center;
   background-color: #212125;
+  background-attachment: fixed;
+  max-width: 100vw; 
+  overflow: hidden;
 
   /* Use this to preload images so there's no flash on the transitions */
   &&:after {
@@ -51,12 +56,11 @@ const BackGroundImages = styled.div`
 const Container = styled.div`
   position: relative;
   width: 100%;
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
   color: #fff;
-  overflow: visible;
   flex-direction: column;
   background-color: rgba(0, 0, 0, 0.45);
 
@@ -68,7 +72,7 @@ const Container = styled.div`
 const Content = styled(Row)`
   flex-direction: column;
   justify-content: space-evenly;
-  height: 100%;
+  height: 200vh;
   max-height: 900px;
   align-items: flex-start;
   flex-wrap: nowrap;

@@ -21,7 +21,7 @@ const callback = async (req, res) => {
 const saveOrUpdateUser = async user => {
   await dbConnect()
   try {
-    await User.update({sub: user.sub}, user, { upsert: true, setDefaultsOnInsert: true })
+    await User.updateOne({sub: user.sub}, user, { upsert: true, setDefaultsOnInsert: true })
   } catch (error) {
     console.error(error)
     res.status(error.status || 500).end(error.message)
