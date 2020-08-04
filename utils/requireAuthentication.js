@@ -4,8 +4,6 @@
 
 // TODO: LOW: There's probably a better solution out there worth investigating but this works for now
 
-// export const getServerSideProps = requireAuthentication
-
 // TODO: Extend this to be able to add other props if I find I need to use 
 // getServerSideProps for anything else. 
 

@@ -51,19 +51,25 @@ const reset = `
   }
 
 `
-// TODO: move values in to theme
-const GlobalStyle = createGlobalStyle`
-  ${reset}
-  html { font-size: 10px; }
 
-  body {
-    font-family: "Roboto", sans-serif;
-    font-weight: 300;
-    font-size: 1.3rem;
-    line-height: 1.4;
+const GlobalStyle = createGlobalStyle`${({ theme }) => `
+  ${reset}
+  
+  *, *:before, *:after {
+    box-sizing: border-box;
   }
 
-  b, strong { font-weight: bold }
-`
+  html { font-size: ${theme.fonts.base.fontSize}; }
+
+  body {
+    font-family: ${theme.fonts.base.fontFamily};
+    font-weight: ${theme.fonts.weights.regular};
+    font-size: ${theme.fonts.s.fontSize};
+    line-height: ${theme.fonts.s.lineHeight};
+  }
+
+  b, strong { font-weight: ${theme.fonts.weights.bold} }
+`}`
+
 
 export default GlobalStyle
