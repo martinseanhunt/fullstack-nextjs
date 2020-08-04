@@ -1,11 +1,20 @@
 import styled, { keyframes } from 'styled-components'
 
+// TODO: only apply the background class once all images have loaded
+
 const FullPageBackground = ({ children }) => {
   return (  
     <BackGroundImages>
       <Container>
         {children}
       </Container>
+      <HiddenImages>
+        <img src="/hero_1.jpg" alt="playing bass 1"/>
+        <img src="/hero_2.jpg" alt="playing bass 2"/>
+        <img src="/hero_3.jpg" alt="playing bass 3"/>
+        <img src="/hero_4.jpg" alt="playing bass 4"/>
+        <img src="/hero_5.jpg" alt="playing bass 5"/>
+      </HiddenImages>
     </BackGroundImages>
   ) 
 }
@@ -28,16 +37,14 @@ const BackGroundImages = styled.div`
   background-attachment: fixed;
   max-width: 100vw; 
   overflow: hidden;
+`
 
-  /* Use this to preload images so there's no flash on the transitions */
-  &&:after {
-    position: absolute; 
-    width: 0; 
-    height: 0; 
-    overflow: hidden; 
-    z-index: -1;
-    content: url('/hero_1.jpg') url('/hero_2.jpg') url('/hero_3.jpg') url('/hero_4.jpg') url('/hero_5.jpg');
-  }
+const HiddenImages = styled.div`
+  position: absolute; 
+  width: 0; 
+  height: 0; 
+  overflow: hidden; 
+  z-index: -1;
 `
 
 // TODO: pull out flexbox stuff and create a Grid component which I can extend here

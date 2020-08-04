@@ -21,7 +21,7 @@ import ButtonLink from '../components/common/ButtonLink'
 const Home = ({ userCount }) => {
   const router = useRouter()
 
-  console.log(process.env.AUTH0_CLIENT_ID)
+  console.log(process.env.AUTH0_CLIENT_ID, process.env.NEXT_PUBLIC_BASE_URL)
 
   useEffect(() => {
     const getUser = async () => {
