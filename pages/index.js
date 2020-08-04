@@ -21,6 +21,8 @@ import ButtonLink from '../components/common/ButtonLink'
 const Home = ({ userCount }) => {
   const router = useRouter()
 
+  console.log(process.env.AUTH0_CLIENT_ID)
+
   useEffect(() => {
     const getUser = async () => {
       const res = await fetch('/api/me')
