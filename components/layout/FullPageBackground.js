@@ -9,7 +9,7 @@ const FullPageBackground = ({ children }) => {
         {children}
       </Container>
       <HiddenImages>
-        {Array.from({}.length = 5).map((_, i) => (
+        {Array.from({ length: 5 }).map((_, i) => (
           <img src={`/hero_${i}.jpg`} alt={`playing bass${i}.jpg`} />
         ))}
       </HiddenImages>
