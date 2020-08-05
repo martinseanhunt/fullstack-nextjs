@@ -1,6 +1,6 @@
 import styled, { keyframes } from 'styled-components'
 
-// TODO: only apply the background class once all images have loaded
+// TODO: only apply the background image once all images have loaded
 
 const FullPageBackground = ({ children }) => {
   return (  
@@ -9,11 +9,9 @@ const FullPageBackground = ({ children }) => {
         {children}
       </Container>
       <HiddenImages>
-        <img src="/hero_1.jpg" alt="playing bass 1"/>
-        <img src="/hero_2.jpg" alt="playing bass 2"/>
-        <img src="/hero_3.jpg" alt="playing bass 3"/>
-        <img src="/hero_4.jpg" alt="playing bass 4"/>
-        <img src="/hero_5.jpg" alt="playing bass 5"/>
+        {Array.from({}.length = 5).map((_, i) => (
+          <img src={`/hero_${i}.jpg`} alt={`playing bass${i}.jpg`} />
+        ))}
       </HiddenImages>
     </BackGroundImages>
   ) 

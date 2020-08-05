@@ -2,7 +2,9 @@ import React, { useContext, createContext, useReducer, useMemo } from 'react'
 
 import userReducer, { initialState } from './userReducer'
 
-// TODO: Delete this or change it in to another context
+// TODO: I'm not using this context any more becuase we get the user information as part
+// of the auth process with getServerSideProps. Keeping this here since I'll probably use
+// a context for something else down the road and it saves me time leter :) 
 
 const UserContext = createContext()
 const useUserContext = () => useContext(UserContext)

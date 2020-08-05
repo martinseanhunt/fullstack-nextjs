@@ -14,7 +14,7 @@ import ButtonLink from '../components/common/ButtonLink'
 
 // TODO: BONUS Add live activity stream!
 
-// TODO: POLL FOR UPDATES TO USER COUNT (EVENTUALLY ACTIVITY STREAM)
+// TODO: Poll for updates to user count (eventually activity stream)
 // I'm using incremental static regeneration to get the existing activity stream
 // poll for new updates client side to update as the user is on the page. 
 
